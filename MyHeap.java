@@ -13,40 +13,41 @@ public class MyHeap {
       int rightchild = leftchild + 1; //index of right child
 
       if (rightchild == size) { //if there is exactly one child
-        if (data[leftchild] > data[index]) {
-          int larger = data[leftchild];
+        if (data[leftchild] > data[index]) { //if the other child is greater than the current value
+          int larger = data[leftchild]; //switch the two
           data[leftchild] = data[index];
           data[index] = larger;
         }
         else {
-          done = true;
+          done = true; //otherwise no more pushing is needed
         }
       }
 
       else if (rightchild < size) { //there are two children
 
-        if (data[leftchild] > data[rightchild]) {
-          if (data[leftchild] > data[index]) {
-            int larger = data[leftchild];
+        if (data[leftchild] > data[rightchild]) { //if the child on the left is greater than right
+          if (data[leftchild] > data[index]) { //if the child is also greater than the current value
+            int larger = data[leftchild]; //switch the two
             data[leftchild] = data[index];
             data[index] = larger;
           }
-          else {
+          else { //otherwise no more pushing is needed
             done = true;
           }
         }
         else {
-          if (data[rightchild] > data[index]) {
-            int larger = data[rightchild];
+          if (data[rightchild] > data[index]) { //if the child on the right is greater than the left
+            //and it is greater than the current value
+            int larger = data[rightchild]; //switch the two
             data[rightchild] = data[index];
             data[index] = larger;
           }
-          else {
+          else { //otherwise no more pushing is needed
             done = true;
           }
         }
       }
-      else {
+      else { //no more pushing is needed
         done = true;
       }
     }
@@ -56,24 +57,24 @@ public class MyHeap {
     boolean done = false;
     while (!done) {
 
-      if (index == 0) {
-        done = true;
+      if (index == 0) { //if it's at the top
+        done = true; //no more switching is needed
       }
 
-      int parent = 0;
-      if (index % 2 == 0) {
-        parent = index / 2;
+      int parent = 0; //initializes parent
+      if (index % 2 == 0) { //if the child has an even index
+        parent = index / 2; //parent is half of that
       }
-      else {
-        parent = parent /2;
+      else { //if the child has an odd index
+        parent = parent /2; //parent ??
       }
 
-      if (data[index] > data[parent]) {
-        int larger = data[index];
+      if (data[index] > data[parent]) { //if the current value is greater than the parent
+        int larger = data[index]; //switch the two
         data[index] = data[parent];
         data[parent] = larger;
       }
-      else {
+      else { //otherwise no more pushing up is needed
         done = true;
       }
 
