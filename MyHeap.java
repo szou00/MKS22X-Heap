@@ -53,7 +53,12 @@ public class MyHeap {
   }
 
   private static void pushUp(int[] data, int index) {
-    while (index > 0) {
+    boolean done = false;
+    while (!done) {
+
+      if (index == 0) {
+        done = true;
+      }
 
       int parent = 0;
       if (index % 2 == 0) {
@@ -61,6 +66,15 @@ public class MyHeap {
       }
       else {
         parent = parent /2;
+      }
+
+      if (data[index] > data[parent]) {
+        int larger = data[index];
+        data[index] = data[parent];
+        data[parent] = larger;
+      }
+      else {
+        done = true;
       }
 
     }
