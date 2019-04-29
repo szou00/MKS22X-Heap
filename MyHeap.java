@@ -52,6 +52,20 @@ public class MyHeap {
     }
   }
 
+  private static void pushUp(int[] data, int index) {
+    while (index > 0) {
+
+      int parent = 0;
+      if (index % 2 == 0) {
+        parent = index / 2;
+      }
+      else {
+        parent = parent /2;
+      }
+
+    }
+  }
+
 
 
 }
