@@ -80,6 +80,12 @@ public class MyHeap {
     }
   }
 
+    public static void heapify(int[] data) {
+
+      for (int i = data.length-1; i>-1;i--) {
+        pushDown(data,data.length,i);
+      }
+    }
 
 
 }
