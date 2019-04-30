@@ -102,7 +102,7 @@ public class MyHeap {
         data[0] = data[i]; //switch the current end with the largest
         data[i] = temp;
         s--; //decrease the amount of values being looked at
-        pushDown(data,s,0); //get the switched value in its correct spot 
+        pushDown(data,s,0); //get the switched value in its correct spot
       }
     }
 
