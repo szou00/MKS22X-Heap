@@ -7,5 +7,8 @@ public class driver {
 
     MyHeap.heapify(array);
     System.out.println(Arrays.toString(array));
+
+    MyHeap.heapsort(array);
+    System.out.println(Arrays.toString(array));
   }
 }
