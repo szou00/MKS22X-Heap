@@ -9,7 +9,7 @@ public class MyHeap {
   private static void pushDown(int[]data,int size,int index) {
     boolean done = false;
     while (!done) {
-      int leftchild = index * 2 + 1; //index of left child
+      int leftchild = (index * 2 + 1); //index of left child
       int rightchild = leftchild + 1; //index of right child
 
       if (rightchild == size) { //if there is exactly one child
@@ -17,6 +17,7 @@ public class MyHeap {
           int larger = data[leftchild]; //switch the two
           data[leftchild] = data[index];
           data[index] = larger;
+          index = leftchild;
         }
         else {
           done = true; //otherwise no more pushing is needed
@@ -30,6 +31,7 @@ public class MyHeap {
             int larger = data[leftchild]; //switch the two
             data[leftchild] = data[index];
             data[index] = larger;
+            index = leftchild; //changes current index to the left child since it's been pushed down
           }
           else { //otherwise no more pushing is needed
             done = true;
@@ -41,6 +43,7 @@ public class MyHeap {
             int larger = data[rightchild]; //switch the two
             data[rightchild] = data[index];
             data[index] = larger;
+            index = rightchild;
           }
           else { //otherwise no more pushing is needed
             done = true;
