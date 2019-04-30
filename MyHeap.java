@@ -83,8 +83,21 @@ public class MyHeap {
 
     public static void heapify(int[] data) {
 
-      for (int i = data.length-1; i>-1;i--) {
-        pushDown(data,data.length,i);
+      for (int i = data.length-1; i>-1;i--) { //starting from the back
+        pushDown(data,data.length,i); //push them down
+      }
+    }
+
+    public static void heapsort(int[] data) {
+      heapify(data);
+      int s = data.length;
+      for (int i = data.length-1; i > -1; i--) {
+        int temp = data[0]; //store the largest?? value
+        System.out.println("temp: " + temp + " data[i]: " + data[i]);
+        data[0] = data[i]; //switch the smallest with the largest
+        data[i] = temp;
+        s--;
+        pushDown(data,s,0);
       }
     }
 
