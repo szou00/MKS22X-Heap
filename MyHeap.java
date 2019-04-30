@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MyHeap {
 
   /*
@@ -92,15 +94,15 @@ public class MyHeap {
     }
 
     public static void heapsort(int[] data) {
-      heapify(data);
-      int s = data.length;
-      for (int i = data.length-1; i > -1; i--) {
-        int temp = data[0]; //store the largest?? value
-        System.out.println("temp: " + temp + " data[i]: " + data[i]);
-        data[0] = data[i]; //switch the smallest with the largest
+      heapify(data); //create a heap
+      int s = data.length; //keep track of the amt of values that are being sorted
+      for (int i = data.length-1; i > -1; i--) { //going through the list
+        int temp = data[0]; //store the current largest value
+        // System.out.println(Arrays.toString(data));
+        data[0] = data[i]; //switch the current end with the largest
         data[i] = temp;
-        s--;
-        pushDown(data,s,0);
+        s--; //decrease the amount of values being looked at
+        pushDown(data,s,0); //get the switched value in its correct spot 
       }
     }
 
