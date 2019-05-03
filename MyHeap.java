@@ -26,34 +26,36 @@ public class MyHeap {
         }
       }
 
-      else if (rightchild < size) { //there are two children
+      else {
 
-        if (data[leftchild] > data[rightchild]) { //if the child on the left is greater than right
-          if (data[leftchild] > data[index]) { //if the child is also greater than the current value
-            int larger = data[leftchild]; //switch the two
-            data[leftchild] = data[index];
-            data[index] = larger;
-            index = leftchild; //changes current index to the left child since it's been pushed down
+        if (rightchild < size) { //there are two children
+          if (data[leftchild] > data[rightchild]) { //if the child on the left is greater than right
+            if (data[leftchild] > data[index]) { //if the child is also greater than the current value
+              int larger = data[leftchild]; //switch the two
+              data[leftchild] = data[index];
+              data[index] = larger;
+              index = leftchild; //changes current index to the left child since it's been pushed down
+            }
+            else { //otherwise no more pushing is needed
+              done = true;
+            }
           }
-          else { //otherwise no more pushing is needed
-            done = true;
+          else {
+            if (data[rightchild] > data[index]) { //if the child on the right is greater than the left
+              //and it is greater than the current value
+              int larger = data[rightchild]; //switch the two
+              data[rightchild] = data[index];
+              data[index] = larger;
+              index = rightchild;
+            }
+            else { //otherwise no more pushing is needed
+              done = true;
+            }
           }
         }
-        else {
-          if (data[rightchild] > data[index]) { //if the child on the right is greater than the left
-            //and it is greater than the current value
-            int larger = data[rightchild]; //switch the two
-            data[rightchild] = data[index];
-            data[index] = larger;
-            index = rightchild;
-          }
-          else { //otherwise no more pushing is needed
-            done = true;
-          }
+        else { //no more pushing is needed
+          done = true;
         }
-      }
-      else { //no more pushing is needed
-        done = true;
       }
     }
   }
@@ -68,21 +70,25 @@ public class MyHeap {
 
       int parent = 0; //initializes parent
       if (index % 2 == 0) { //if the child has an even index
-        parent = index / 2; //parent is half of that
+        parent = (index/2)-1;
       }
-      else { //if the child has an odd index
-        parent = parent /2; //parent ??
+      else { //odd index
+        parent = index/2;
       }
 
-      if (data[index] > data[parent]) { //if the current value is greater than the parent
-        int larger = data[index]; //switch the two
-        data[index] = data[parent];
-        data[parent] = larger;
-      }
-      else { //otherwise no more pushing up is needed
+      if (parent < 0) { //it may not have a parent
         done = true;
       }
-
+      else {
+        if (data[index] > data[parent]) { //if the current value is greater than the parent
+          int larger = data[index]; //switch the two
+          data[index] = data[parent];
+          data[parent] = larger;
+        }
+        else { //otherwise no more pushing up is needed
+          done = true;
+        }
+      }
     }
   }
 
@@ -104,6 +110,15 @@ public class MyHeap {
         s--; //decrease the amount of values being looked at
         pushDown(data,s,0); //get the switched value in its correct spot
       }
+    }
+
+    public static void main(String[] args) {
+      int[] test1 = {1, 11, 8, 10, 7, 6, 5, 4, 2, 1};
+      System.out.print("test1 before: ");
+      System.out.print(Arrays.toString(test1));
+      pushUp(test1, 3);
+      System.out.println("\n + test1 after: ");
+      System.out.print(Arrays.toString(test1));
     }
 
 
