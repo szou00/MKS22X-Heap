@@ -10,5 +10,6 @@ public class driver {
 
     MyHeap.heapsort(array);
     System.out.println(Arrays.toString(array));
+
   }
 }
